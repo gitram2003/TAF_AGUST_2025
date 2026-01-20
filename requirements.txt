@@ -1,0 +1,6 @@
+pytest
+pyyaml
+pandas
+pyspark
+openpyxl
+snowflake-connector-python

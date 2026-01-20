@@ -1,0 +1,41 @@
+
+source:
+  path: "C:/Users/Devak/PycharmProjects/taf_agust/input_files/customer_data/customer_data_01.csv"
+  type: "csv"
+  schema: "Y"
+  options:
+    header: True
+    delimiter: ","
+    inferSchema: False
+    multiline : False
+    flatten : "Y"
+  exclude_cols: ["batch_id"]
+
+target:
+  path: "C:/Users/Devak/PycharmProjects/taf_agust/input_files/customer_data/customer_data_01.csv"
+  type: "csv"
+  schema: "N"
+  options:
+    header: True
+    delimiter: ","
+    inferSchema: True
+    flatten : 'N'
+  exclude_cols: ["batch_id"]
+
+validations:
+  count_check:
+    key_columns: ["customer_id"]
+  duplicate_check:
+    key_columns: ["customer_id","name","email","phone"]
+  null_check:
+    null_columns: ["customer_id","name", "email", "phone"]
+    num_records: 100
+  uniqueness_check:
+    unique_columns: ["phone","name"]
+  data_compare_check:
+    key_column: ["customer_id"]
+    validate_columns: ["na"]
+    num_records: 100
+  dq_check:
+    name_check: "customer_name"
+    check_range: [10,99]

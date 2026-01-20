@@ -1,0 +1,29 @@
+#cread config.yml
+#mysql server details
+mysql_server:
+  url: "jdbc:mysql://localhost:3306/dwh?useSSL=false&allowPublicKeyRetrieval=true&enabledTLSProtocols=TLSv1.2&serverTimezone=UTC"
+  user: "root"
+  password: "2003"
+  driver: "com.mysql.cj.jdbc.Driver"
+#microsoft Azure server
+azure_server:
+    url: "jdbc:sqlserver://slqdatabasedemo100001.database.windows.net:1433;database=test_db"
+    user: 'ram08082003'
+    password: 'Rama08082003'
+    driver: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+
+postgres_server:
+    url : "jdbc:postgresql://localhost:5432/postgres"
+    user: "postgres"
+    password: 2003
+    diver : "org.prostgresql.Driver"
+    port : 5432
+
+snowflake_server :
+    url: "jdbc:snowflake://<username>.snowflakecomputing.com"
+    user : "ram08082003"
+    password: "Rama08082003ra"
+    warehouse: "test_wh"
+    driver: "net.snowflake.client.jdbc.SnowflakeDriver"
+
+
