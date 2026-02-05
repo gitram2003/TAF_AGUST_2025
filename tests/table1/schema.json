@@ -22,7 +22,7 @@
       "metadata": {},
       "name": "phone",
       "nullable": true,
-      "type": "long"
+      "type": "string"
     },
     {
       "metadata": {},

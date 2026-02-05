@@ -1,17 +1,21 @@
-#config.yml
+
 source:
-  type: 'database'
-  transformation : ['N',"sql"]
-  table : '[dbo].[cust_data_3]'
-  cred_lookup : 'azure_server'
-  exclude_cols : ['batch_id']
+  path: 'C:\Users\Devak\PycharmProjects\taf_agust\TAF_AGUST_2025\input_files\transformation\transaction.csv'
+  type: "csv"
+  schema: "Y"
+  options:
+    header: True
+    delimiter: ","
+    inferSchema: True
+    multiline : False
+  exclude_cols: []
 
 target:
   type: 'database'
-  transformation: [ 'N',"sql" ]
-  table : '[dbo].[cust_data_1]'
+  transformation: [ 'Y',"sql" ]
+  table: ' [dbo].[transaction]'
   cred_lookup: 'azure_server'
-  exclude_cols: [ 'batch_id' ]
+  exclude_cols: []
 
 validations:
   count_check:
@@ -22,7 +26,7 @@ validations:
     null_columns: ["customer_id","name", "email", "phone"]
     num_records: 100
   uniqueness_check:
-    unique_columns: ["phone","name"]
+    unique_columns: ["phone","batch_id"]
   data_compare_check:
     key_column: ["customer_id"]
     validate_columns: ["na"]

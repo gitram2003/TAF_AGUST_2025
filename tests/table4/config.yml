@@ -1,4 +1,4 @@
-
+#config.yml
 source:
   type: 'database'
   transformation : ['Y',"sql"]
@@ -8,11 +8,10 @@ source:
 
 target:
   type: 'database'
-  transformation: [ 'N',"sql" ]
-  table: ' [dbo].[cust_data_1]'
+  transformation: [ 'Y',"sql" ]
+  table: ' [dbo].[cust_data_2]'
   cred_lookup: 'azure_server'
   exclude_cols: [ 'batch_id' ]
-
 
 
 validations:

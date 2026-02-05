@@ -4,4 +4,11 @@ def test_table3(read_data):
     source_df.show()
     target_df.show()
     source_df.printSchema()
+    source_df.printSchema()
     assert True
+
+
+
+
+
+

@@ -16,7 +16,7 @@ postgres_server:
     url : "jdbc:postgresql://localhost:5432/postgres"
     user: "postgres"
     password: 2003
-    diver : "org.prostgresql.Driver"
+    driver : "org.prostgresql.Driver"
     port : 5432
 
 snowflake_server :
