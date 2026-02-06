@@ -1,3 +1,5 @@
+import great_expectations as ge
+
 from data_validations.count_check import *
 from data_validations.duplicate_check import duplicate_check
 from data_validations.duplicate_check import duplicate_check
@@ -5,6 +7,7 @@ from data_validations.null_value_check import null_values_check
 from data_validations.uniqueness_check import uniqueness_check
 from data_validations.data_compare_check import data_compare
 from data_validations.schema_check import schema_compare
+from data_validations.data_quality_check import *
 
 
 # def test_table1_count(read_data):
@@ -42,23 +45,41 @@ from data_validations.schema_check import schema_compare
 #     status = null_values_check(df=target_df,null_cols=nulls_check,num_records=num_records)
 #     assert status == "PASS"
 
-def test_table1_data_compare(read_data):
-    print('\n<<<<<<<<<<<<<<test_table1_data_compare checking start>>>>>>>>>>>>>>>')
+# def test_table1_data_compare(read_data):
+#     print('\n<<<<<<<<<<<<<<test_table1_data_compare checking start>>>>>>>>>>>>>>>')
+#     source_df,target_df,validation_config = read_data
+#     source_df.show()
+#     target_df.show()
+#     key_columns = validation_config['data_compare_check']['key_column']
+#     num_records = validation_config['data_compare_check']['num_records']
+#     status = data_compare(source_df,target_df,key_columns,num_records)
+#     assert status == "PASS"
+#
+# def test_table1_schema_check(read_data,spark_session):
+#     print('\n<<<<<<<<<<<<<<test_table1_schema_compare checking start>>>>>>>>>>>>>>>')
+#     source_df,target_df,validation_config = read_data
+#     spark = spark_session
+#     source_df.show()
+#     target_df.show()
+#     status = schema_compare(source_df,target_df,spark)
+#     assert status == "PASS"
+
+def test_table_name_check(read_data):
+    print('\n<<<<<<<<<<<<<<test_table1_name checking start>>>>>>>>>>>>>>>')
     source_df,target_df,validation_config = read_data
-    source_df.show()
     target_df.show()
-    key_columns = validation_config['data_compare_check']['key_column']
-    num_records = validation_config['data_compare_check']['num_records']
-    status = data_compare(source_df,target_df,key_columns,num_records)
+    column = validation_config['dq_check']['name_check']
+    status = name_check(target_df,column)
     assert status == "PASS"
 
-def test_table1_schema_check(read_data,spark_session):
-    print('\n<<<<<<<<<<<<<<test_table1_schema_compare checking start>>>>>>>>>>>>>>>')
+
+def test_table1_name_check_GE(read_data):
+    print('\n<<<<<<<<<<<<<<test_table1_name_GE checking start>>>>>>>>>>>>>>>')
     source_df,target_df,validation_config = read_data
-    spark = spark_session
-    source_df.show()
-    target_df.show()
-    status = schema_compare(source_df,target_df,spark)
-    assert status == "PASS"
+    dataset = ge.SparkDFDataset(target_df)
+    col_name = validation_config['dq_check']['name_check']
+    result = dataset.expect_column_values_to_match_regex(col_name,r"^[a-zA-Z ]+$")
+    print(result)
+
 
 

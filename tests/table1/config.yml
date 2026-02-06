@@ -35,5 +35,5 @@ validations:
     validate_columns: ["na"]
     num_records: 100
   dq_check:
-    name_check: "customer_name"
+    name_check: "name"
     check_range: [10,99]
