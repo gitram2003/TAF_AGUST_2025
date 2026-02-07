@@ -77,8 +77,9 @@ from pyspark.sql import SparkSession
 
 import os
 
-taf_agust = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print("taf_agust", taf_agust)
+# taf_agust = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# print("taf_agust", taf_agust)
+#
+# jar = os.path.join(taf_agust,'jars_file','mssql-jdbc-12.2.1.jre11.jar')
+# print("jar", jar)
 
-jar = os.path.join(taf_agust,'jars_file','mssql-jdbc-12.2.1.jre11.jar')
-print("jar", jar)

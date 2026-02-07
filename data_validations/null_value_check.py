@@ -28,3 +28,4 @@ def null_values_check(df,null_cols,num_records):
             else:
                 status = "PASS"
                 write_output("null_values_count",status,f"No Failures : {null_count}",df)
+                return status

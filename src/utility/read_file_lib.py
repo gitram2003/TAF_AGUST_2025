@@ -11,7 +11,6 @@ def read_file(config,spark,dir_path):  #once config dir_path done coming to read
         if schema == 'Y':# you give N then directly pass to else block
             print("../need schema/..")
             schema_json = read_schema(dir_path)#after read_data to check path of dir_path and go to read_schema in general_lib fun
-
             df = spark.read.schema(schema_json).csv(path,header = True,sep = options['delimiter'])
         else:
             print("../no need schema/..")
